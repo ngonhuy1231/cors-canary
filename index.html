@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><title>ht-cors-canary</title>
+<pre id="out">running...</pre>
+<script>
+(async () => {
+  const out = document.getElementById("out");
+  try {
+    const r = await fetch("https://partners.hoteltonight-test.com/agents/sign_in", { credentials: "include" });
+    const t = await r.text();
+    out.textContent = "FETCH-OK status=" + r.status + " len=" + t.length + " head=" + t.slice(0, 120);
+  } catch (e) {
+    out.textContent = "FETCH-DENIED " + e;
+  }
+})();
+</script>
